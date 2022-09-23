@@ -1,10 +1,13 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
 const { abi, evm } = require('./compile');
- 
+require('dotenv').config();
+
+const mnemonic =   process.env.MNEMONIC_PHRASE;
+
 const provider = new HDWalletProvider(
-  process.env.MNEMONIC_PHRASE,
-  'https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}'
+mnemonic,
+  'https://rinkeby.infura.io/v3/${process.env.INFURA.API.KEY}'
 );
  
 const web3 = new Web3(provider);
@@ -18,8 +21,8 @@ const deploy = async () => {
     .deploy({ data: evm.bytecode.object })
     .send({ gas: '1000000', from: accounts[0] });
  
-  console.log(JSON.stringify(abi));
-  console.log('Contract deployed to', result.options.address);
+  // console.log(JSON.stringify(abi));
+  // console.log('Contract deployed to', result.options.address);
   provider.engine.stop();
 };
 deploy();
