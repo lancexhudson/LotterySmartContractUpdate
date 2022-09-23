@@ -3,10 +3,8 @@ const Web3 = require('web3');
 const { abi, evm } = require('./compile');
 require('dotenv').config();
 
-const mnemonic =   process.env.MNEMONIC_PHRASE;
-
 const provider = new HDWalletProvider(
-mnemonic,
+process.env.MNEMONIC_PHRASE,
   'https://rinkeby.infura.io/v3/${process.env.INFURA.API.KEY}'
 );
  
