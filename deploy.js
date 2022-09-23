@@ -3,8 +3,8 @@ const Web3 = require('web3');
 const { abi, evm } = require('./compile');
  
 const provider = new HDWalletProvider(
-  'virus cannon edge remember must mean twice link abandon elder clap mechanic',
-  'https://rinkeby.infura.io/v3/eea2492b68b34fabaf3b845dd04de6e0'
+  process.env.MNEMONIC_PHRASE,
+  'https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}'
 );
  
 const web3 = new Web3(provider);
